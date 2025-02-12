@@ -21,9 +21,16 @@ public class LibraryTest {
 	@Test
 	public void ShouldAddBookWithUniqueISBN() {
     	Library library = new Library();
-        library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
-        System.out.println(library.getBooks());
-        assertTrue(true);
+    	Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
+        assertTrue(library.addBook(book));
+    }
+	
+	@Test
+	public void ShouldSomeBooksWithUniqueISBN() {
+    	Library library = new Library();
+    	Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
+        assertTrue(library.addBook(book));
+        assertTrue(library.addBook(book));
     }
 	
 	@Test
