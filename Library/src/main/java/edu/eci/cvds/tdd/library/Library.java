@@ -39,7 +39,6 @@ public class Library {
     	if (book.getAuthor()!= null && book.getIsbn()!= null && book.getTittle()!= null) {
 	    	int amount = books.getOrDefault(book, 0);
 	    	books.put(book, amount + 1);
-	    	System.out.println(books.get(book).toString());
 	        
 	    	// Verificar si el ISBN ya está en el mapa
 	    	for (Book existingBook : books.keySet()) {
@@ -67,10 +66,21 @@ public class Library {
      * @return The new created loan.
      */
     public Loan loanABook(String userId, String isbn) {
+    	for (User user:users) {
+			if (user.getId() != null && user.getId() == userId ) {
+	    		Loan loan = new Loan();
+	    		
+	    		for (Map.Entry<Book, Integer> entry : books.entrySet()) {
+	    		    Book book = entry.getKey();
+	    		    int count = entry.getValue();
+	    		    if (count != 0) {
+	    		    	return null;
+	    		    }
+	    		}
+	    	}
+		}
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-    	if (userId != null && isbn != null) {
-    		return null;
-    	}
+    	
         return null;
     }
 

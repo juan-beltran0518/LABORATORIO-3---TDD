@@ -79,9 +79,12 @@ public class LibraryTest {
 	}
 	
 	@Test
-	public void ShouldLoanBook() {
+	public void ShouldNotLoanBookWithNotUser() {
 	    Library library = new Library();
-	    assertNotNull(library.loanABook("1234", "56757634"));
+	    User user = new User(null, null);
+	    library.addUser(user);
+	    Loan loan = new Loan();
+	    assertNotNull(library.loanABook(null, null));
 	    
 	}
 
