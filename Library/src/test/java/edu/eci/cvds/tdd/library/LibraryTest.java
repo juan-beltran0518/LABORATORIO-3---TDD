@@ -82,7 +82,6 @@ public class LibraryTest {
 	public void ShouldLoanBook() {
 	    Library library = new Library();
 	    assertNotNull(library.loanABook("1234", "56757634"));
-	    
 	}
 
 
