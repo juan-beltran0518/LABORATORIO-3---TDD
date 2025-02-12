@@ -91,7 +91,7 @@ public class LibraryTest {
     public void shouldUpdateUserIdSuccessfully() {
         User user = new User("Sebastian", "100200300");
         user.setId("8952255");
-        assertEquals(null, user.getId());
+        assertEquals("8952255", user.getId());
     }
 
         
