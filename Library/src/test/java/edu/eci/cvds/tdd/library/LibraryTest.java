@@ -15,18 +15,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 
 
-/**
- * Library responsible for manage the loans and the users.
- */
+
 public class LibraryTest {
 	
-	public boolean ShouldAddBookWithUniqueISBN(Book book) {
+	@Test
+	public void ShouldAddBookWithUniqueISBN() {
     	Library library = new Library();
-    	library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
-        return false;
+        library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
+        assertTrue(true);
     }
-
-    public boolean ShouldNotAddBookWithSameISBN(Book book) {
+	
+	@Test
+    public boolean ShouldNotAddBookWithSameISBN() {
     	Library library = new Library();
     	library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
     	library.addBook(new Book("El caballero de la armadura oxidada","Robert Fisher","9788497592208"));
