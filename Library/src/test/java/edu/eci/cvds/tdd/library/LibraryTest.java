@@ -67,9 +67,10 @@ public class LibraryTest {
 	    Library library = new Library();
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
 	    assertTrue(book.equals(book));
+	    System.out.println("Hola");
 	}
 
-	
+
 
 
     
