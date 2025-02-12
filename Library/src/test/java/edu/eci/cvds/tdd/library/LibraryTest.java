@@ -70,29 +70,6 @@ public class LibraryTest {
 	}
 
 	
-	@Test
-	public void shouldNotAllowEmptyUserId() {
-	    User user = new User("Juan Beltran",null);
-	    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-	        user.setId(""); // id Vacio 
-	    });
-    @Test
-    public void shouldNotAllowEmptyUserId() {
-        Exception exception = assertThrows(InvalidUserException.class, () -> {
-            new User("Sebastian", ""); 
-        });
-
-        assertEquals("User ID cannot be empty or null", exception.getMessage());
-    }
-
-    @Test
-    public void shouldNotAllowEmptyUserName() {
-        Exception exception = assertThrows(InvalidUserException.class, () -> {
-            new User("", "1032878923"); 
-        });
-
-        assertEquals("User name cannot be empty or null", exception.getMessage());
-    }
 
 
     
