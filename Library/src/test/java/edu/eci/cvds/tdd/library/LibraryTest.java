@@ -113,8 +113,7 @@ public class LibraryTest {
     }
     
     
-        
-<<<<<<< HEAD
+       
     public Loan loanABook(String userId, String isbn) {
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
         return null;
@@ -126,9 +125,5 @@ public class LibraryTest {
         user.setName("Alejandro");
         assertEquals("Alejandro", user.getName());
     }
-
-=======
->>>>>>> 46edc708bcb5798e635a30a72053573b3c5f9032
-    
-
+   
 }
