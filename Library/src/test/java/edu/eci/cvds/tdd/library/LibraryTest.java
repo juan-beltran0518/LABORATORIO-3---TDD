@@ -97,13 +97,13 @@ public class LibraryTest {
     @Test
     public void shouldGetUserName() {
         User user = new User("Carlos", "123456");
-        assertEquals("123456", user.getName());
+        assertEquals("Carlos", user.getName());
     }
     
     @Test
     public void shouldGetUserId() {
         User user = new User("Carlos", "123456");
-        assertEquals("Carlos", user.getId());
+        assertEquals("123456", user.getId());
     }
         
     public Loan loanABook(String userId, String isbn) {
