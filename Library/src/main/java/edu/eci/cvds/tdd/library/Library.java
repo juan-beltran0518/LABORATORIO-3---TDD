@@ -36,7 +36,7 @@ public class Library {
      * @return true if the book was stored false otherwise.
      */
     public boolean addBook(Book book) {
-    	if (book != null) {
+    	if (book.getAuthor()!= null && book.getIsbn()!= null && book.getTittle()!= null) {
 	    	int amount = books.getOrDefault(book, 0);
 	    	books.put(book, amount + 1);
 	    	System.out.println(books.get(book).toString());

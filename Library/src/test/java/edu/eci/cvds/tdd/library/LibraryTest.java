@@ -33,12 +33,19 @@ public class LibraryTest {
         assertTrue(library.addBook(book));
     }
 	
+//	@Test
+//    public void ShouldNotAddBookWithSameISBN() {
+//    	Library library = new Library();
+//    	library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
+//    	library.addBook(new Book("El caballero de la armadura oxidada","Robert Fisher","9788497592208"));
+//        assertFalse(false);
+//    }
+	
 	@Test
-    public void ShouldNotAddBookWithSameISBN() {
+    public void ShouldNotAddBookNotValid() {
     	Library library = new Library();
-    	library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
-    	library.addBook(new Book("El caballero de la armadura oxidada","Robert Fisher","9788497592208"));
-        assertFalse(false);
+    	Book book = new Book("100 años de soledad","Gabriel García Márqiez", null);
+        assertFalse(library.addBook(book));
     }
 	
 	
