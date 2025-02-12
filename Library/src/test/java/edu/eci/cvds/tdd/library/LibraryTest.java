@@ -6,7 +6,6 @@ import edu.eci.cvds.tdd.library.user.User;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,12 +41,22 @@ public class LibraryTest {
         assertFalse(library.addBook(book2));
     }
 	
+	
+	
 	@Test
-    public void ShouldNotAddBookNotValid() {
+    public void ShouldNotAddBookWitNullISBN() {
     	Library library = new Library();
     	Book book = new Book("100 años de soledad","Gabriel García Márqiez", null);
         assertFalse(library.addBook(book));
     }
+	@Test
+	public void ShouldNotAddBookWithNullAuthor() {
+	    Library library = new Library();
+	    Book book = new Book("100 años de soledad", null, "9788497592208");
+	    assertFalse(library.addBook(book));
+	}
+
+	
 	
 	@Test
 	public void shouldNotAllowEmptyUserId() {
