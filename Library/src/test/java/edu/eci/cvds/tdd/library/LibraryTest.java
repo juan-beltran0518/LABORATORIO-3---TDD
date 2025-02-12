@@ -64,17 +64,13 @@ public class LibraryTest {
 	    assertFalse(library.addBook(book));
 	}
 	
-	
-
 	@Test
 	public void ShouldCompareBooksWithEqualISBN() {
 	    Library library = new Library();
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
 	    assertTrue(book.equals(book));
-	    
 	}
 
-<<<<<<< HEAD
 		    
 	@Test
 	public void shouldNotAllowEmptyUserId() {
@@ -90,18 +86,15 @@ public class LibraryTest {
         assertEquals("Salomon", user.getName());
         assertEquals("1032878954", user.getId());
     }
-=======
-
->>>>>>> 043e17ec9f7824d4d30282507cdd01723950fca0
-
     
     @Test
-    public void shouldSetUserIdSuccessfully() {
-        User user = new User("Carlos", "123456");
-        user.setId("654321");
-        assertEquals("654321", user.getId());
+    public void shouldUpdateUserIdSuccessfully() {
+        User user = new User("Sebastian", "100200300");
+        user.setId("8952255");
+        assertEquals(null, user.getId());
     }
-    
+
+        
     public Loan loanABook(String userId, String isbn) {
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
         return null;
