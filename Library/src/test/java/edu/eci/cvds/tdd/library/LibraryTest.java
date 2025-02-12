@@ -22,6 +22,7 @@ public class LibraryTest {
 	public void ShouldAddBookWithUniqueISBN() {
     	Library library = new Library();
         library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
+        System.out.println(library.getBooks());
         assertTrue(true);
     }
 	

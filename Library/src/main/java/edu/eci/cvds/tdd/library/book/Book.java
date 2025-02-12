@@ -29,4 +29,9 @@ public class Book {
     public boolean equals(Object obj) {
         return isbn.equals(((Book)obj).isbn);
     }
+    
+    @Override
+    public String toString() {
+    	return "Title: " + tittle + "\n" + "Author: " + author + "\n" + "ISBN: " + isbn; 
+    }
 }
