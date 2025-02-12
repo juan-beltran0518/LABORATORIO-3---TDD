@@ -9,24 +9,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+
 /**
  * Library responsible for manage the loans and the users.
  */
 public class LibraryTest {
+	
+	public boolean ShouldAddBookWithUniqueISBN(Book book) {
+    	Library library = new Library();
+    	library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
+        return false;
+    }
 
-
-    /**
-     * Adds a new {@link edu.eci.cvds.tdd.library.book.Book} into the system, the book is store in a Map that contains
-     * the {@link edu.eci.cvds.tdd.library.book.Book} and the amount of books available, if the book already exist the
-     * amount should increase by 1 and if the book is new the amount should be 1, this method returns true if the
-     * operation is successful false otherwise.
-     *
-     * @param book The book to store in the map.
-     *
-     * @return true if the book was stored false otherwise.
-     */
     public boolean ShouldNotAddBookWithSameISBN(Book book) {
-    	
+    	Library library = new Library();
+    	library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
+    	library.addBook(new Book("El caballero de la armadura oxidada","Robert Fisher","9788497592208"));
         return false;
     }
 
