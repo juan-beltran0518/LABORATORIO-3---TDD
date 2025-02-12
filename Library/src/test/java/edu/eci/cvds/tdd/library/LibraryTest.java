@@ -83,7 +83,7 @@ public class LibraryTest {
     @Test
     public void shouldNotAllowEmptyUserName() {
         Exception exception = assertThrows(InvalidUserException.class, () -> {
-            new User("Salomon", ""); 
+            new User("", "1032878923"); 
         });
 
         assertEquals("User name cannot be empty or null", exception.getMessage());
