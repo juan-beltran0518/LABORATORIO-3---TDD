@@ -40,7 +40,15 @@ public class Library {
 	    	int amount = books.getOrDefault(book, 0);
 	    	books.put(book, amount + 1);
 	    	System.out.println(books.get(book).toString());
-	        return true;
+	        
+	    	// Verificar si el ISBN ya está en el mapa
+	    	for (Book existingBook : books.keySet()) {
+	    		if (existingBook.getIsbn().equals(book.getIsbn()) && (book.getAuthor()!= existingBook.getAuthor() ||  book.getTittle()!= existingBook.getTittle())) {
+	    			return false; // No agregar el libro
+	            	}
+	            }
+            
+            return true;
     	}
     	return false;
     }
@@ -92,5 +100,8 @@ public class Library {
 	public List<Loan> getLoans() {
 		return loans;
 	}
+	
+	
+	
 
 }
