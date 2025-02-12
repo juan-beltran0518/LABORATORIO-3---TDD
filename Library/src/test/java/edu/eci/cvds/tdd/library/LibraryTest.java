@@ -4,24 +4,57 @@ import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
 import edu.eci.cvds.tdd.library.user.User;
 
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+
+
 public class LibraryTest {
 	
-	public boolean ShouldAddBook(Book book) {
-        //TODO Implement the logic to add a new book into the map.
-        return false;
+	@Test
+	public void ShouldAddBookWithUniqueISBN() {
+    	Library library = new Library();
+    	Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
+        assertTrue(library.addBook(book));
     }
 	
-	public Loan loanABook(String userId, String isbn) {
+	@Test
+	public void ShouldSomeBooksWithUniqueISBN() {
+    	Library library = new Library();
+    	Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
+        assertTrue(library.addBook(book));
+        assertTrue(library.addBook(book));
+    }
+	
+	@Test
+    public void ShouldNotAddBookWithSameISBN() {
+    	Library library = new Library();
+    	library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
+    	library.addBook(new Book("El caballero de la armadura oxidada","Robert Fisher","9788497592208"));
+        assertFalse(false);
+    }
+	
+	
+
+    
+    public Loan loanABook(String userId, String isbn) {
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
         return null;
     }
-	
-	public Loan returnLoan(Loan loan) {
+
+    public Loan returnLoan(Loan loan) {
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
         return null;
     }
-	
-	public boolean addUser(User user) {
+
+    public boolean addUser(User user) {
         return false;
     }
 

@@ -12,6 +12,7 @@ public class Book {
         this.isbn = isbn;
     }
 
+    
     public String getTittle() {
         return tittle;
     }
@@ -27,5 +28,10 @@ public class Book {
     @Override
     public boolean equals(Object obj) {
         return isbn.equals(((Book)obj).isbn);
+    }
+    
+    @Override
+    public String toString() {
+    	return "Title: " + tittle + "\n" + "Author: " + author + "\n" + "ISBN: " + isbn; 
     }
 }
