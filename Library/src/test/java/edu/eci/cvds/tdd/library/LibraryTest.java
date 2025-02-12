@@ -86,8 +86,6 @@ public class LibraryTest {
 	}
 
 
-
-
     @Test
     public void shouldNotAllowEmptyUserName() {
         User user = new User("Salomon", "1032878954");
@@ -114,19 +112,6 @@ public class LibraryTest {
         assertEquals("123456", user.getId());
     }
         
-    public Loan loanABook(String userId, String isbn) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-        return null;
-    }
-
     
-    public Loan returnLoan(Loan loan) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-        return null;
-    }
-
-    public boolean addUser(User user) {
-        return false;
-    }
 
 }
