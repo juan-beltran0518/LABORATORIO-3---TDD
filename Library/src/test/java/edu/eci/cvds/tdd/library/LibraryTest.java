@@ -88,21 +88,6 @@ public class LibraryTest {
 
         assertEquals("User name cannot be empty or null", exception.getMessage());
     }
-
-
     
-    public Loan loanABook(String userId, String isbn) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-        return null;
-    }
-
-    public Loan returnLoan(Loan loan) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-        return null;
-    }
-
-    public boolean addUser(User user) {
-        return false;
-    }
 
 }
