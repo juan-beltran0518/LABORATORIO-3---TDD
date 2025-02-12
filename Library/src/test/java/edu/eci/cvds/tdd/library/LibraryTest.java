@@ -49,12 +49,15 @@ public class LibraryTest {
     }
 	
 	@Test
-    public void shouldNotAllowEmptyUserId() {
-        User user = new User();
-        user.setId(""); 
-        assertNotNull(user.getId(), "User ID should not be null");
-        assertFalse(user.getId().isEmpty(), "User ID should not be empty");
-    }
+	public void shouldNotAllowEmptyUserId() {
+	    User user = new User();
+	    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+	        user.setId(""); // id Vacio 
+	    });
+
+	    assertEquals("User ID cannot be empty or null", exception.getMessage());
+	}
+
 
     
     public Loan loanABook(String userId, String isbn) {
