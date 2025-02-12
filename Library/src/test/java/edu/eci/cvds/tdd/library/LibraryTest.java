@@ -55,6 +55,13 @@ public class LibraryTest {
 	    Book book = new Book("100 años de soledad", null, "9788497592208");
 	    assertFalse(library.addBook(book));
 	}
+	
+	@Test
+	public void ShouldNotAddBookWithNullTitle() {
+	    Library library = new Library();
+	    Book book = new Book(null, "Gabriel García Márquez", "9788497592208");
+	    assertFalse(library.addBook(book));
+	}
 
 	
 	
