@@ -66,7 +66,6 @@ public class LibraryTest {
 	
 	@Test
 	public void ShouldCompareBooksWithEqualISBN() {
-	    Library library = new Library();
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
 	    assertTrue(book.equals(book));
 	}
@@ -77,6 +76,13 @@ public class LibraryTest {
 	    User user = new User("Sebastian", "1032878954");
 	    assertEquals("Sebastian", user.getName());
 	    assertEquals("1032878954", user.getId());
+	}
+	
+	@Test
+	public void ShouldLoanBook() {
+	    Library library = new Library();
+	    assertNotNull(library.loanABook("1234", "56757634"));
+	    
 	}
 
 
@@ -108,6 +114,7 @@ public class LibraryTest {
     
     
         
+<<<<<<< HEAD
     public Loan loanABook(String userId, String isbn) {
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
         return null;
@@ -120,14 +127,8 @@ public class LibraryTest {
         assertEquals("Alejandro", user.getName());
     }
 
+=======
+>>>>>>> 46edc708bcb5798e635a30a72053573b3c5f9032
     
-    public Loan returnLoan(Loan loan) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-        return null;
-    }
-
-    public boolean addUser(User user) {
-        return false;
-    }
 
 }
