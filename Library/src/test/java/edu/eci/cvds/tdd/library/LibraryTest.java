@@ -62,6 +62,13 @@ public class LibraryTest {
 	    Book book = new Book(null, "Gabriel García Márquez", "9788497592208");
 	    assertFalse(library.addBook(book));
 	}
+	
+	@Test
+	public void ShouldNotAddBookWithNullAtributes() {
+	    Library library = new Library();
+	    Book book = new Book(null, null, null);
+	    assertFalse(library.addBook(book));
+	}
 
 	
 	
