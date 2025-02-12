@@ -36,10 +36,13 @@ public class Library {
      * @return true if the book was stored false otherwise.
      */
     public boolean addBook(Book book) {
-    	int amount = books.getOrDefault(book, 0);
-    	books.put(book, amount + 1);
-    	System.out.println(books.get(book).toString());
-        return true;
+    	if (book != null) {
+	    	int amount = books.getOrDefault(book, 0);
+	    	books.put(book, amount + 1);
+	    	System.out.println(books.get(book).toString());
+	        return true;
+    	}
+    	return false;
     }
 
     /**

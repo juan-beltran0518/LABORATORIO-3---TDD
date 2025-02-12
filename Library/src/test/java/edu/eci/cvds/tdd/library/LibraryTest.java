@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
@@ -34,12 +34,14 @@ public class LibraryTest {
     }
 	
 	@Test
-    public boolean ShouldNotAddBookWithSameISBN() {
+    public void ShouldNotAddBookWithSameISBN() {
     	Library library = new Library();
     	library.addBook(new Book("100 años de soledad","Gabriel García Márqiez","9788497592208"));
     	library.addBook(new Book("El caballero de la armadura oxidada","Robert Fisher","9788497592208"));
-        return false;
+        assertFalse(false);
     }
+	
+	
 
     
     public Loan loanABook(String userId, String isbn) {
