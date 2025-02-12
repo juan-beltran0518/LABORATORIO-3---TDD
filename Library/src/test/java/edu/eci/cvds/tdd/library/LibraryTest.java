@@ -71,8 +71,10 @@ public class LibraryTest {
 	    Library library = new Library();
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
 	    assertTrue(book.equals(book));
+	    
 	}
 
+<<<<<<< HEAD
 		    
 	@Test
 	public void shouldNotAllowEmptyUserId() {
@@ -88,6 +90,9 @@ public class LibraryTest {
         assertEquals("Salomon", user.getName());
         assertEquals("1032878954", user.getId());
     }
+=======
+
+>>>>>>> 043e17ec9f7824d4d30282507cdd01723950fca0
 
     
     @Test
