@@ -81,7 +81,7 @@ public class LibraryTest {
 	
 	@Test
 	public void shouldNotAllowEmptyUserId() {
-	    User user = new User();
+	    User user = new User("Juan Beltran",null);
 	    Exception exception = assertThrows(IllegalArgumentException.class, () -> {
 	        user.setId(""); // id Vacio 
 	    });
