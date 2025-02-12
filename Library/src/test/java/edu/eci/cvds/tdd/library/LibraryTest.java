@@ -105,10 +105,19 @@ public class LibraryTest {
         User user = new User("Carlos", "123456");
         assertEquals("123456", user.getId());
     }
+    
+    
         
     public Loan loanABook(String userId, String isbn) {
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
         return null;
+    }
+    
+    @Test
+    public void shouldSetUserNameSuccessfully() {
+        User user = new User("Carlos", "123456");
+        user.setName("Alejandro");
+        assertEquals("Alejandro", user.getName());
     }
 
     
