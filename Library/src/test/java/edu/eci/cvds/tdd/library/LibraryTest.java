@@ -94,6 +94,17 @@ public class LibraryTest {
         assertEquals("8952255", user.getId());
     }
 
+    @Test
+    public void shouldGetUserName() {
+        User user = new User("Carlos", "123456");
+        assertEquals("123456", user.getName());
+    }
+    
+    @Test
+    public void shouldGetUserId() {
+        User user = new User("Carlos", "123456");
+        assertEquals("Carlos", user.getId());
+    }
         
     public Loan loanABook(String userId, String isbn) {
         //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
