@@ -15,8 +15,9 @@ import java.util.Map;
 public class Library {
 
     private final List<User> users;
-    private final Map<Book, Integer> books;
+	private final Map<Book, Integer> books;
     private final List<Loan> loans;
+   
 
     public Library() {
         users = new ArrayList<>();
@@ -35,8 +36,21 @@ public class Library {
      * @return true if the book was stored false otherwise.
      */
     public boolean addBook(Book book) {
-        //TODO Implement the logic to add a new book into the map.
-        return false;
+    	if (book.getAuthor()!= null && book.getIsbn()!= null && book.getTittle()!= null) {
+	    	int amount = books.getOrDefault(book, 0);
+	    	books.put(book, amount + 1);
+	    	System.out.println(books.get(book).toString());
+	        
+	    	// Verificar si el ISBN ya está en el mapa
+	    	for (Book existingBook : books.keySet()) {
+	    		if (existingBook.getIsbn().equals(book.getIsbn()) && (book.getAuthor()!= existingBook.getAuthor() ||  book.getTittle()!= existingBook.getTittle())) {
+	    			return false; // No agregar el libro
+	            	}
+	            }
+            
+            return true;
+    	}
+    	return false;
     }
 
     /**
@@ -74,5 +88,20 @@ public class Library {
     public boolean addUser(User user) {
         return users.add(user);
     }
+    
+    public List<User> getUsers() {
+		return users;
+	}
+
+	public Map<Book, Integer> getBooks() {
+		return books;
+	}
+
+	public List<Loan> getLoans() {
+		return loans;
+	}
+	
+	
+	
 
 }
