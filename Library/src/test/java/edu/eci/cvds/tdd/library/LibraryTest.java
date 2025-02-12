@@ -64,13 +64,17 @@ public class LibraryTest {
 	
 	@Test
 	public void ShouldCompareBooksWithEqualISBN() {
-	    Library library = new Library();
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
 	    assertTrue(book.equals(book));
 	    
 	}
-
-
+	
+	@Test
+	public void ShouldLoanBook() {
+	    Library library = new Library();
+	    assertNotNull(library.loanABook("1234", "56757634"));
+	    
+	}
 
 
     
