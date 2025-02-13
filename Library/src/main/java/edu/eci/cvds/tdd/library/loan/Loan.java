@@ -16,6 +16,8 @@ public class Loan {
     	this.status = status;
     	this.user = user;
     	this.book = book;
+    	setLoanDate(LocalDateTime.now());
+    	
     }
 
     public Book getBook() {
@@ -60,7 +62,7 @@ public class Loan {
     
     @Override
     public String toString(){
-    	return getBook().toString() + "\n" + "User: " + user.toString() + "\n" + "Status: " + status; 
+    	return getBook().toString() + "\n" + "User: " + user.toString() + "\n" + "Status: " + status +  "\n" + "Date: " + loanDate; 
 
     }
 }

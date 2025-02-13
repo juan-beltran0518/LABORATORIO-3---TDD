@@ -5,6 +5,8 @@ import edu.eci.cvds.tdd.library.loan.Loan;
 import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -104,18 +106,26 @@ public class Library {
      */
     public Loan returnLoan(Loan loan) {
         if (loan == null || !loans.contains(loan)) {
-            return null;        }
+            return null; // Si el préstamo no existe, retornar null
+        }
 
         for (Loan existingLoan : loans) {
             if (existingLoan.equals(loan) && existingLoan.getStatus() == LoanStatus.ACTIVE) {
+                // Cambiar el estado del préstamo a RETURNED
                 existingLoan.setStatus(LoanStatus.RETURNED);
-                books.put(existingLoan.getBook(), books.getOrDefault(existingLoan.getBook(), 0) + 1);
+                
+                // Registrar la fecha de devolución
+                existingLoan.setReturnDate(LocalDateTime.now());
 
-                return existingLoan;
+                // Aumentar el stock del libro
+                Book book = existingLoan.getBook();
+                books.put(book, books.getOrDefault(book, 0) + 1);
+
+                return existingLoan; // Retornar el préstamo actualizado
             }
         }
 
-        return null; 
+        return null; // Si no se encontró un préstamo activo
     }
 
 
@@ -133,12 +143,9 @@ public class Library {
 
 	public List<Loan> getLoans() {
 		for (Loan loan:loans) {
-			loan.toString();
+			System.out.println(loan.toString());
 		}
 		return loans;
 	}
-	
-	
-	
 
 }
