@@ -12,9 +12,10 @@ public class Loan {
     private LoanStatus status;
     private LocalDateTime returnDate;
     
-    public Loan(LoanStatus status, User user) {
+    public Loan(LoanStatus status, User user,Book book) {
     	this.status = status;
     	this.user = user;
+    	this.book = book;
     }
 
     public Book getBook() {
@@ -59,7 +60,7 @@ public class Loan {
     
     @Override
     public String toString(){
-    	return "Book: " + getBook().toString() + "\n" + "User: " + user.toString() + "\n" + "Status: " + status; 
+    	return getBook().toString() + "\n" + "User: " + user.toString() + "\n" + "Status: " + status; 
 
     }
 }
