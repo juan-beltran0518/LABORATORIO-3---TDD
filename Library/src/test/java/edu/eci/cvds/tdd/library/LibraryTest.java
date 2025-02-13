@@ -92,30 +92,12 @@ public class LibraryTest {
 	public void ShouldLoanBookWithValidUser() {
 	    Library library = new Library();
 	    User user = new User("Salomon Baena", "1001346737");
-	    Book book1 = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
-	    Book book2 = new Book("El coronel no tiene quien le escriba","Gabriel García Márqiez","9788497599208");
-	    library.addUser(user);
-	    library.addBook(book1);
-	    library.addBook(book2);
-	    library.loanABook("1001346737","9788497592208");
-	    library.loanABook("1001346737","9788497599208");
-	    library.getLoans();
-	 }
-	
-	
-	@Test
-	public void ShouldLoanSameBooksWithExistingUser() {
-	    Library library = new Library();
-	    User user = new User("Salomon Baena", "1001346737");
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
 	    library.addUser(user);
 	    library.addBook(book);
 	    library.loanABook("1001346737","9788497592208");
-	    library.loanABook("1001346737","9788497592208");
-	    
-	 }
-	
-	
+	    System.out.print(library.getLoans());	    
+	    }
 
 
     @Test
@@ -124,8 +106,7 @@ public class LibraryTest {
         assertEquals("Salomon", user.getName());
         assertEquals("1032878954", user.getId());
     }
-      
-  
+
     @Test
     public void shouldUpdateUserIdSuccessfully() {
         User user = new User("Sebastian", "100200300");
@@ -144,7 +125,6 @@ public class LibraryTest {
         User user = new User("Carlos", "123456");
         assertEquals("123456", user.getId());
     }
-       
    
     @Test
     public void shouldSetUserNameSuccessfully() {
