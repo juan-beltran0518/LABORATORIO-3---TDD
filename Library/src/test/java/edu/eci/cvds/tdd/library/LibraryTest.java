@@ -83,7 +83,6 @@ public class LibraryTest {
 	    Library library = new Library();
 	    User user = new User(null, null);
 	    library.addUser(user);
-	    Loan loan = new Loan();
 	    assertNotNull(library.loanABook(null, null));
 	    
 	}

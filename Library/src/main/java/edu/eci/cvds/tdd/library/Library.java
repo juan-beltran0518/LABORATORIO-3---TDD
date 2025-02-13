@@ -2,6 +2,7 @@ package edu.eci.cvds.tdd.library;
 
 import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
+import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
 
 import java.util.ArrayList;
@@ -68,19 +69,15 @@ public class Library {
     public Loan loanABook(String userId, String isbn) {
     	for (User user:users) {
 			if (user.getId() != null && user.getId() == userId ) {
-	    		Loan loan = new Loan();
-	    		
 	    		for (Map.Entry<Book, Integer> entry : books.entrySet()) {
 	    		    Book book = entry.getKey();
 	    		    int count = entry.getValue();
-	    		    if (count != 0) {
-	    		    	return null;
+	    		    if (count != 0 && book.getIsbn() == isbn) {
+	    		    	return new Loan(LoanStatus.ACTIVE);
 	    		    }
 	    		}
 	    	}
-		}
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-    	
+		}    	
         return null;
     }
 
