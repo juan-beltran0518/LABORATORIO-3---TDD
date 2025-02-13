@@ -11,6 +11,14 @@ public class Loan {
     private LocalDateTime loanDate;
     private LoanStatus status;
     private LocalDateTime returnDate;
+    
+    public Loan(LoanStatus status, User user,Book book) {
+    	this.status = status;
+    	this.user = user;
+    	this.book = book;
+    	setLoanDate(LocalDateTime.now());
+    	
+    }
 
     public Book getBook() {
         return book;
@@ -50,5 +58,11 @@ public class Loan {
 
     public void setReturnDate(LocalDateTime returnDate) {
         this.returnDate = returnDate;
+    }
+    
+    @Override
+    public String toString(){
+    	return getBook().toString() + "\n" + "User: " + user.toString() + "\n" + "Status: " + status +  "\n" + "Date: " + loanDate; 
+
     }
 }

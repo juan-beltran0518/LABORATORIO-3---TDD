@@ -2,8 +2,11 @@ package edu.eci.cvds.tdd.library;
 
 import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
+import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -66,23 +69,31 @@ public class Library {
      * @return The new created loan.
      */
     public Loan loanABook(String userId, String isbn) {
-    	for (User user:users) {
-			if (user.getId() != null && user.getId() == userId ) {
-	    		Loan loan = new Loan();
-	    		
-	    		for (Map.Entry<Book, Integer> entry : books.entrySet()) {
-	    		    Book book = entry.getKey();
-	    		    int count = entry.getValue();
-	    		    if (count != 0) {
-	    		    	return null;
-	    		    }
-	    		}
-	    	}
-		}
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-    	
+        for (User user : users) {
+            if (user.getId() != null && user.getId().equals(userId)) {
+                // Verificar si el usuario ya tiene un préstamo activo de este libro
+                for (Loan loan : loans) {
+                    if (loan.getUser().equals(user) && loan.getBook().getIsbn().equals(isbn) && loan.getStatus() == LoanStatus.ACTIVE) {
+                        return null; // No permitir un segundo préstamo del mismo libro
+                    }
+                }
+
+                // Buscar el libro en la lista de disponibles
+                for (Map.Entry<Book, Integer> entry : books.entrySet()) {
+                    Book book = entry.getKey();
+                    int count = entry.getValue();
+                    if (count > 0 && book.getIsbn().equals(isbn)) {
+                        Loan newLoan = new Loan(LoanStatus.ACTIVE, user, book);
+                        loans.add(newLoan);
+                        books.put(book, count - 1); // Reducir el stock del libro
+                        return newLoan;
+                    }
+                }
+            }
+        }
         return null;
     }
+
 
     /**
      * This method return a loan, meaning that the amount of books should be increased by 1, the status of the Loan
@@ -94,9 +105,29 @@ public class Library {
      * @return the loan with the RETURNED status.
      */
     public Loan returnLoan(Loan loan) {
-        //TODO Implement the login of loan a book to a user based on the UserId and the isbn.
-        return null;
+        if (loan == null || !loans.contains(loan)) {
+            return null; // Si el préstamo no existe, retornar null
+        }
+
+        for (Loan existingLoan : loans) {
+            if (existingLoan.equals(loan) && existingLoan.getStatus() == LoanStatus.ACTIVE) {
+                // Cambiar el estado del préstamo a RETURNED
+                existingLoan.setStatus(LoanStatus.RETURNED);
+                
+                // Registrar la fecha de devolución
+                existingLoan.setReturnDate(LocalDateTime.now());
+
+                // Aumentar el stock del libro
+                Book book = existingLoan.getBook();
+                books.put(book, books.getOrDefault(book, 0) + 1);
+
+                return existingLoan; // Retornar el préstamo actualizado
+            }
+        }
+
+        return null; // Si no se encontró un préstamo activo
     }
+
 
     public boolean addUser(User user) {
         return users.add(user);
@@ -111,10 +142,10 @@ public class Library {
 	}
 
 	public List<Loan> getLoans() {
+		for (Loan loan:loans) {
+			System.out.println(loan.toString());
+		}
 		return loans;
 	}
-	
-	
-	
 
 }
