@@ -104,7 +104,7 @@ public class LibraryTest {
 	
 	
 	@Test
-	public void ShouldLoanSomeBooksWithExistingUser() {
+	public void ShouldLoanSameBooksWithExistingUser() {
 	    Library library = new Library();
 	    User user = new User("Salomon Baena", "1001346737");
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
