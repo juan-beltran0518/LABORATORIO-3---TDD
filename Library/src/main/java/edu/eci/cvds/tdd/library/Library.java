@@ -68,12 +68,12 @@ public class Library {
      */
     public Loan loanABook(String userId, String isbn) {
     	for (User user:users) {
-			if (user.getId() != null && user.getId() == userId ) {
+			if (user.getId() != null && user.getId().equals(userId) ) {
 	    		for (Map.Entry<Book, Integer> entry : books.entrySet()) {
 	    		    Book book = entry.getKey();
 	    		    int count = entry.getValue();
-	    		    if (count != 0 && book.getIsbn() == isbn) {
-	    		    	return new Loan(LoanStatus.ACTIVE);
+	    		    if (count != 0 && book.getIsbn().equals(isbn)) {
+	    		    	 loans.add(new Loan(LoanStatus.ACTIVE,user));
 	    		    }
 	    		}
 	    	}
@@ -108,6 +108,9 @@ public class Library {
 	}
 
 	public List<Loan> getLoans() {
+		for (Loan loan:loans) {
+			System.out.println(loan.toString());
+		}
 		return loans;
 	}
 	

@@ -2,6 +2,7 @@ package edu.eci.cvds.tdd.library;
 
 import edu.eci.cvds.tdd.library.book.Book;
 import edu.eci.cvds.tdd.library.loan.Loan;
+import edu.eci.cvds.tdd.library.loan.LoanStatus;
 import edu.eci.cvds.tdd.library.user.User;
 /*
 import edu.eci.cvds.tdd.library.exceptions.InvalidUserException;
@@ -83,9 +84,20 @@ public class LibraryTest {
 	    Library library = new Library();
 	    User user = new User(null, null);
 	    library.addUser(user);
-	    assertNotNull(library.loanABook(null, null));
+	    assertNull(library.loanABook(null, null));
 	    
 	}
+	
+	@Test
+	public void ShouldLoanBookWithValidUser() {
+	    Library library = new Library();
+	    User user = new User("Salomon Baena", "1001346737");
+	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
+	    library.addUser(user);
+	    library.addBook(book);
+	    library.loanABook("1001346737","9788497592208");
+	    System.out.print(library.getLoans());	    
+	    }
 
 
     @Test
@@ -94,6 +106,8 @@ public class LibraryTest {
         assertEquals("Salomon", user.getName());
         assertEquals("1032878954", user.getId());
     }
+    
+    
     
   
     @Test
