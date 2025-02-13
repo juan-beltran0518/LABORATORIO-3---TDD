@@ -12,17 +12,17 @@ import org.junit.jupiter.api.Test;
 
 
 
-public class LibraryTest {
+class LibraryTest {
 	
 	@Test
-	public void ShouldAddBookWithUniqueISBN() {
+	void ShouldAddBookWithUniqueISBN() {
     	Library library = new Library();
     	Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
         assertTrue(library.addBook(book));
     }
 	
 	@Test
-	public void ShouldSomeBooksWithUniqueISBN() {
+	void ShouldSomeBooksWithUniqueISBN() {
     	Library library = new Library();
     	Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
         assertTrue(library.addBook(book));
@@ -30,7 +30,7 @@ public class LibraryTest {
     }
 	
 	@Test
-    public void ShouldNotAddBookWithSameISBN() {
+    void ShouldNotAddBookWithSameISBN() {
     	Library library = new Library();
     	Book book1 = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
     	Book book2 = new Book("El caballero de la armadura oxidada","Robert Fisher","9788497592208");
@@ -39,41 +39,41 @@ public class LibraryTest {
     }
 	
 	@Test
-    public void ShouldNotAddBookWitNullISBN() {
+    void ShouldNotAddBookWitNullISBN() {
     	Library library = new Library();
     	Book book = new Book("100 años de soledad","Gabriel García Márqiez", null);
         assertFalse(library.addBook(book));
     }
 	@Test
-	public void ShouldNotAddBookWithNullAuthor() {
+	void ShouldNotAddBookWithNullAuthor() {
 	    Library library = new Library();
 	    Book book = new Book("100 años de soledad", null, "9788497592208");
 	    assertFalse(library.addBook(book));
 	}
 	
 	@Test
-	public void ShouldNotAddBookWithNullTitle() {
+	void ShouldNotAddBookWithNullTitle() {
 	    Library library = new Library();
 	    Book book = new Book(null, "Gabriel García Márquez", "9788497592208");
 	    assertFalse(library.addBook(book));
 	}
 	
 	@Test
-	public void ShouldNotAddBookWithNullAtributes() {
+	void ShouldNotAddBookWithNullAtributes() {
 	    Library library = new Library();
 	    Book book = new Book(null, null, null);
 	    assertFalse(library.addBook(book));
 	}
 	
 	@Test
-	public void ShouldCompareBooksWithEqualISBN() {
+	void ShouldCompareBooksWithEqualISBN() {
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
 	    assertTrue(book.equals(book));
 	}
 
 		    
 	@Test
-	public void shouldNotAllowEmptyUserId() {
+	void shouldNotAllowEmptyUserId() {
 	    User user = new User("Sebastian", "1032878954");
 	    assertEquals("Sebastian", user.getName());
 	    assertEquals("1032878954", user.getId());
@@ -89,7 +89,7 @@ public class LibraryTest {
 	}
 	
 	@Test
-	public void ShouldLoanBookWithValidUser() {
+	 void ShouldLoanBookWithValidUser() {
 	    Library library = new Library();
 	    User user = new User("Salomon Baena", "1001346737");
 	    Book book1 = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
@@ -104,7 +104,7 @@ public class LibraryTest {
 	
 	
 	@Test
-	public void ShouldLoanSameBooksWithExistingUser() {
+	 void ShouldLoanSameBooksWithExistingUser() {
 	    Library library = new Library();
 	    User user = new User("Salomon Baena", "1001346737");
 	    Book book = new Book("100 años de soledad","Gabriel García Márqiez","9788497592208");
@@ -115,11 +115,32 @@ public class LibraryTest {
 	    
 	 }
 	
+	@Test
+	 void ShouldReturnLoanSuccessfully() {
+	    Library library = new Library();
+	    User user = new User("Salomon Baena", "1001346737");
+	    Book book = new Book("100 años de soledad", "Gabriel García Márquez", "9788497592208");
+
+	    library.addUser(user);
+	    library.addBook(book);
+
+	    Loan loan = library.loanABook("1001346737", "9788497592208");
+	    assertNotNull(loan);
+	    assertEquals(LoanStatus.ACTIVE, loan.getStatus());
+
+	    Loan returnedLoan = library.returnLoan(loan);
+	    assertNotNull(returnedLoan);
+	    assertEquals(LoanStatus.RETURNED, returnedLoan.getStatus());
+	    assertNotNull(returnedLoan.getReturnDate()); 
+
+	    assertEquals(1, library.getBooks().get(book));
+	}
+	
 	
 
 
     @Test
-    public void shouldNotAllowEmptyUserName() {
+     void shouldNotAllowEmptyUserName() {
         User user = new User("Salomon", "1032878954");
         assertEquals("Salomon", user.getName());
         assertEquals("1032878954", user.getId());
@@ -127,27 +148,27 @@ public class LibraryTest {
       
   
     @Test
-    public void shouldUpdateUserIdSuccessfully() {
+     void shouldUpdateUserIdSuccessfully() {
         User user = new User("Sebastian", "100200300");
         user.setId("8952255");
         assertEquals("8952255", user.getId());
     }
 
     @Test
-    public void shouldGetUserName() {
+     void shouldGetUserName() {
         User user = new User("Carlos", "123456");
         assertEquals("Carlos", user.getName());
     }
     
     @Test
-    public void shouldGetUserId() {
+     void shouldGetUserId() {
         User user = new User("Carlos", "123456");
         assertEquals("123456", user.getId());
     }
        
    
     @Test
-    public void shouldSetUserNameSuccessfully() {
+     void shouldSetUserNameSuccessfully() {
         User user = new User("Carlos", "123456");
         user.setName("Alejandro");
         assertEquals("Alejandro", user.getName());
